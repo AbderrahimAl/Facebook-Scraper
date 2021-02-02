@@ -3,7 +3,7 @@
 [![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
  
 
-**Facebook Scraper** is a collection of tools that you can use to collect data from Facebook pages :
+**Facebook Scraper** is a tool that you can use to collect data from Facebook pages :
 
     * Name
     * Nbr of likes
