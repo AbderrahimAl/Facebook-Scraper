@@ -1,5 +1,6 @@
 #Webscrapin Tool
 
+
 # Importing libraries :
 from Login import login
 import requests as rq
@@ -32,17 +33,28 @@ class FacebookInfo():
         soup=BeautifulSoup(page.content,"html.parser")
         return soup
     
+    def get_country(self,country):
+        country=country.lower()
+        country=country.replace(' ','')
+        return country
+    """     
     def url_Keyword(self,key):
         key=key.lower()
+        url=key.replace('www.facebook.com','mbasic.facebook.com')
+        return url
+    """
+    def url_Keyword(self,key,country):
+        key=key.lower()
         key=key.replace(' ','+')
-        url="https://mbasic.facebook.com/search/pages/?q=+singapore"
-        url=url[:-10]+str(key)+url[-10:]
+        url="https://mbasic.facebook.com/search/pages/?q="+str(key)+"+"+str(country)
+        #url=url[:-(len(country)+1)]+str(key)+url[-len(country)+1:]
         return url
     
     def get_page(self,request_url,session):
         page=session.get(request_url) 
         soup=self.Soup(page)
         return soup
+    
     
     
     def more_page(self,soup):
@@ -131,8 +143,9 @@ class FacebookInfo():
             Email.append('None')
         return Email
     
+
     def get_Phone(self,about,Phone):
-        regex=re.compile(r'(\(\d{4}\)\s*\d{4}[-\.\s]??\d{4}|\d{3}[-\.\s]??\d{4})')
+        regex=re.compile(r'\+\d{2}[-\.\s]\d*[-\.\s]?\d*[-\.\s]?\d*[-\.\s]?\d*')
         if re.findall(regex, about)!=[]:
             number =re.findall(regex, about)[0]
             Phone.append(number)
@@ -193,8 +206,11 @@ Names=[]
 likes=[]
 
 session=rq.Session()
-key=str(input("Please Enter One keyword(for example: clothes , apparel ..) :")) #mbasic.facebook !!!
-Request_URL=INFO.url_Keyword(key)
+country= str(input("Choose a country (vietnam | thailand | singapore) :"))
+country=country.lower()
+#key=str(input("Please Enter the keyword url (you need to choose location too !):\n"))
+key=str(input("Enter a keyword :"))
+Request_URL=INFO.url_Keyword(key,country)
 page=INFO.parse_html(Request_URL,session)
 soup=INFO.Soup(page)   
 URLsList,U,likes,Names=INFO.search_Extraction(URLsList,U,Names,likes,soup,session)
@@ -231,6 +247,21 @@ data=pd.concat([df1,df2], ignore_index=True)
 
 if 'Unnamed: 0' in data.columns[0]:
     data=data.drop(['Unnamed: 0'],axis=1)
+
+
+if country=="vietnam":
+    for i in data["Phone Number"]:
+        if "+84" not in i and i !="None":
+            data.drop(data[data["Phone Number"]==i].index,inplace=True)
+if country=="thailand":
+     for i in data["Phone Number"]:
+        if "+66"  not in str(i) and i !="None":
+            data.drop(data[data["Phone Number"]==i].index,inplace=True)
+            
+if country=="singapore":
+     for i in data["Phone Number"]:
+        if "+65"  not in str(i) and i !="None":
+            data.drop(data[data["Phone Number"]==i].index,inplace=True)
 
 data.to_excel("data.xlsx",index=False)
 
