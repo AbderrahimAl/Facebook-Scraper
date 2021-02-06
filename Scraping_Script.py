@@ -1,4 +1,4 @@
-#Webscrapin Tool
+#Webscraping Tool
 
 
 # Importing libraries :
