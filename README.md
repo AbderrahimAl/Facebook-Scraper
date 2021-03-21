@@ -26,3 +26,20 @@ pip install -r requirements.txt
 | Key | keyword URL |
 | NB_posts | How many posts do you want to scrape  |
 | comments_limit | How many comments do you want to scrape |
+
+<p align="center">
+<img src="https://github.com/AbderrahimAl/Facebook-Scraper/blob/main/Key_url.png">
+</p>
+
+#### Output :
+
+| Column name |
+| --- |
+| Name|
+| Post Description | 
+| ALL Reactions | 
+| Profile/Page url | 
+| Images Urls | 
+| Scraping date |
+| Comments |
+| Who Comment id |
