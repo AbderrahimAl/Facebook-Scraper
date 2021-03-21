@@ -16,3 +16,13 @@ git clone https://github.com/AbderrahimAl/Facebook-Scraper.git
 cd Facebook-Scraper
 pip install -r requirements.txt
 ```
+## Fb_Posts_Scraper :
+#### INPUT 
+
+| Input name | meaning |
+| --- | --- |
+| Username | Your Facebook email |
+| Password | Your Facebook password |
+| Key | keyword URL |
+| NB_posts | How many posts do you want to scrape  |
+| comments_limit | How many comments do you want to scrape |
