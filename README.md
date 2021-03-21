@@ -43,3 +43,7 @@ pip install -r requirements.txt
 | Scraping date |
 | Comments |
 | Who Comment id |
+
+
+### Disclaimer
+This educational tool probably violates Facebook terms of service. Use at your own risk.
