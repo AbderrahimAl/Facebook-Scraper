@@ -1,6 +1,6 @@
 # Facebook-Scraper
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-python.svg)](https://forthebadge.com)
+[![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
  
 
 This tool allows you to scrape Facebook Posts and Pages based on search queries. You can use the end result for NLP/text analysis.
