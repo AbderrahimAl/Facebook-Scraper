@@ -1,1 +1,9 @@
-
+requests
+BeautifulSoup
+re
+time
+sys
+pandas
+maskpass
+datetime
+json
