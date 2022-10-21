@@ -3,7 +3,7 @@
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
  
 
-This tool allows you to scrape Facebook Posts and Pages based on search queries. You can use the end result for NLP/text analysis.
+This tool allows you to scrape Facebook Posts based on search queries. You can use the end results for NLP tasks.
 
 ### Prerequisites
 
@@ -24,25 +24,13 @@ pip install -r requirements.txt
 | Username | Your Facebook email |
 | Password | Your Facebook password |
 | Key | keyword URL |
-| NB_posts | How many posts do you want to scrape  |
-| comments_limit | How many comments do you want to scrape |
+| number_posts_max | How many posts do you want to scrape  |
+| number_comments_max | How many comments do you want to scrape |
 
 <p align="center">
-<img src="https://github.com/AbderrahimAl/Facebook-Scraper/blob/main/Key_url.png">
+<img src="posts_urls demo.gif">
 </p>
 
-#### Output :
-
-| Column name |
-| --- |
-| Name|
-| Post Description | 
-| ALL Reactions | 
-| Profile/Page url | 
-| Images Urls | 
-| Scraping date |
-| Comments |
-| Who Comment id |
 
 
 ### Disclaimer

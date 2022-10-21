@@ -1,9 +1,6 @@
-requests
-BeautifulSoup
-re
+selenium
+bs4
 time
-sys
-pandas
-maskpass
-datetime
+re
 json
+pandas
