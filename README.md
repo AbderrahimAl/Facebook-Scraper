@@ -31,7 +31,11 @@ pip install -r requirements.txt
 <img src="posts_urls demo.gif">
 </p>
 
+## Show Your Support
+That's all, thank you for your attention, please [![Star on GitHub][github-star-badge]][github-star] the repo to show your support.
 
-
-### Disclaimer
+## Disclaimer
 This educational tool probably violates Facebook terms of service. Use at your own risk.
+
+[github-star-badge]: https://img.shields.io/github/stars/AbderrahimAl/Facebook-Scraper.svg?style=social
+[github-star]: https://github.com/AbderrahimAl/Facebook-Scraper/stargazers
