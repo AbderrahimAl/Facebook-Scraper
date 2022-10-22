@@ -79,7 +79,7 @@ class Post_Scraper:
         Return:
             A url (`str`) to get the next page.
         """
-        if soup.find("div", id="see_more_pager"):
+        if soup.find("div", id="see_more_pager") is not None:
             more_posts_url = soup.find("div", id="see_more_pager").find('a',href=True)['href']
         else:
             more_posts_url = None
@@ -176,8 +176,8 @@ class Post_Scraper:
             A string containing the profile url.
         """
         h3 = soup.find("h3")
-        if h3: 
-            if h3.find('a'):
+        if h3 is not None: 
+            if h3.find('a') is not None:
                 profile_name = h3.a.get_text()
                 if h3.a.has_attr('href') :
                     h3_a_tag = h3.a['href']
@@ -187,7 +187,7 @@ class Post_Scraper:
                     profile_url = "None"                  
         else :
             a_tag_actor = soup.find('a',class_="actor-link")
-            if a_tag_actor:
+            if a_tag_actor is not None:
                 profile_name = a_tag_actor.get_text()
                 if a_tag_actor.has_attr('href'):
                     profile_url = self.LOGIN_URL + a_tag_actor['href']
@@ -211,11 +211,11 @@ class Post_Scraper:
         else :
             description_text = ' '
             div_tag = soup.find('div',{'data-ft':'{"tn":"*s"}'})
-            if div_tag !=None:
+            if div_tag is not None:
                 description_text += div_tag.get_text()
             else:
                 div_tag =soup.find('div',{'data-ft':'{"tn":",g"}'})
-                if div_tag !=None:
+                if div_tag is not None:
                     description_text += div_tag.get_text().split(" · in Timeline")[0].replace('· Public','')
         return description_text 
 
@@ -226,7 +226,7 @@ class Post_Scraper:
         nbr_reactions = ['0' for i in range(7)] 
         reactions_url_tag = soup.find('a',href=re.compile('/ufi/reaction/profile/'))
      
-        if reactions_url_tag != None:  
+        if reactions_url_tag is not None:  
             reactions_url = self.LOGIN_URL + reactions_url_tag['href']
             #Beautiful Soup Object:
             self.driver.get(reactions_url)
@@ -236,7 +236,7 @@ class Post_Scraper:
             reactions_a_tag = reactions_soup.findAll('a',class_='u')
             for item in reactions_a_tag:
                 reactions_img = item.find('img')
-                if reactions_img !=None:
+                if reactions_img is not None:
                     if reactions_img.has_attr('alt'):
                         reactions_alt=reactions_img['alt']                  
                         for j in range(len(self.REACTIONS_NAMES)):
@@ -247,7 +247,7 @@ class Post_Scraper:
         
     def more_comments(self,soup):
 
-        if soup.find('div',id=re.compile("see_next_")):
+        if soup.find('div',id=re.compile("see_next_")) is not None:
             more_comments_url = soup.find('div',id=re.compile("see_next_")).find('a',href=True)['href'].replace('https://m.facebook.com','')
         else:
             more_comments_url = None
@@ -260,10 +260,10 @@ class Post_Scraper:
         while count <= comments_max: 
             who_commented_profiles, who_commented_names =[],[]
             comments_tag = soup.find_all('h3') 
-            if comments_tag!=[]:
+            if len(comments_tag) > 0:
                 for i in comments_tag:
                     a_tag = i.find('a')
-                    if a_tag:
+                    if a_tag is not None:
                         if a_tag.has_attr('href'):
                             a_href = a_tag['href']
                             if ("refid=52&__tn__=R" in a_href) or ('refid=18&__tn__=R' in a_href) or ("?rc=p&__tn__=R" in a_href):
@@ -287,7 +287,7 @@ class Post_Scraper:
                     aa1.append(j)
                     
             ll=[' ' for i in range(len(who_commented_names))]
-            if who_commented_names !=[]:
+            if len(who_commented_names) > 0:
                 for i in range(len(who_commented_names)):
                     for j in aa1:
                         if who_commented_names[i] in j:
@@ -303,7 +303,7 @@ class Post_Scraper:
             count = len(comments_dict.keys())
             
             more_comments = self.more_comments(soup)
-            if more_comments:
+            if more_comments is not None:
                 more_comments_url = 'https://mbasic.facebook.com' + more_comments
                 self.driver.get(more_comments_url)
                 page_content = self.driver.page_source
