@@ -1,11 +1,13 @@
-# Facebook Scraper
+# Facebook Scraper 🤖
+
+![FB_Scraper](.github/header.svg)
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
  
 
 This tool allows you to scrape Facebook Posts based on search queries. You can use the end results for NLP tasks.
 
-### Prerequisites
+### Prerequisites 🚀
 
 You will need python 3+.
 
@@ -16,8 +18,8 @@ git clone https://github.com/AbderrahimAl/Facebook-Scraper.git
 cd Facebook-Scraper
 pip install -r requirements.txt
 ```
-## Fb_Posts_Scraper :
-#### INPUT 
+
+## INPUTS ✨
 
 | Input name | meaning |
 | --- | --- |
@@ -28,13 +30,13 @@ pip install -r requirements.txt
 | number_comments_max | How many comments do you want to scrape |
 
 <p align="center">
-<img src="posts_urls demo.gif">
+<img src=".github/posts_urls demo.gif">
 </p>
 
-## Show Your Support
+## Show Your Support ☕️
 That's all, thank you for your attention, please [![Star on GitHub][github-star-badge]][github-star] the repo to show your support.
 
-## Disclaimer
+## Disclaimer 🚧
 This educational tool probably violates Facebook terms of service. Use at your own risk.
 
 [github-star-badge]: https://img.shields.io/github/stars/AbderrahimAl/Facebook-Scraper.svg?style=social
