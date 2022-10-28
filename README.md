@@ -1,6 +1,9 @@
 # Facebook Scraper 🤖
 
-![FB_Scraper](.github/header.svg)
+<p align="center">
+<img src=".github/header.png">
+</p>
+
 
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
  
