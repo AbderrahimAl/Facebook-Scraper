@@ -24,7 +24,7 @@ pip install -r requirements.txt
 To execute `Selenium` script, you will need to install ChromeDriver version correspondent to the Chrome version you are using. 
 For more information visit the official website: https://chromedriver.chromium.org/downloads
 
-## INPUTS ✨
+## Inputs ✨
 
 | Input name | meaning |
 | --- | --- |
