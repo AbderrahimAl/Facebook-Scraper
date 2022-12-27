@@ -30,7 +30,6 @@ For more information visit the official website: https://chromedriver.chromium.o
 | --- | --- |
 | Username | Your Facebook email |
 | Password | Your Facebook password |
-| Key | keyword URL |
 | number_posts_max | How many posts do you want to scrape  |
 | number_comments_max | How many comments do you want to scrape |
 | chrome_driver_path | chrome driver location on your local machine | 
