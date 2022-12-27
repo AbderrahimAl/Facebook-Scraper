@@ -4,7 +4,7 @@ import time
 import re
 import json
 import pandas as pd
-from account_credentails import username, password
+from config import username, password, chrome_driver_path, number_posts_max, number_comments_max, output_file_name
 
 class Post_Scraper:
     """
@@ -318,12 +318,8 @@ class Post_Scraper:
 
 if __name__ == "__main__":
 
-    driver_path = "/Users/abderrahimal/Documents/chrome driver/chromedriver"
     posts_url = input(str("Enter Posts Url: "))
-    number_posts_max = int(input("Number of Posts to Scrape: "))
-    number_comments_max = int(input("Number of Comments to Extract by each Post: "))
-    output_file_name = str(input("Output File Name: ")).strip() + '.csv'
-    scraper = Post_Scraper(driver_path, posts_url)
+    scraper = Post_Scraper(chrome_driver_path, posts_url)
     scraper.login(username, password) 
     soup = scraper.get_content()
     posts_urls_list, post_date_list, likes_list = scraper.get_posts_info(soup)

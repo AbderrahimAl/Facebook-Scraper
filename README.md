@@ -10,7 +10,7 @@
 
 This tool allows you to scrape Facebook Posts based on search queries. You can use the end results for NLP tasks.
 
-### Prerequisites 🚀
+## Prerequisites 🚀
 
 You will need python 3+.
 
@@ -21,17 +21,18 @@ git clone https://github.com/AbderrahimAl/Facebook-Scraper.git
 cd Facebook-Scraper
 pip install -r requirements.txt
 ```
+To execute `Selenium` script, you will need to install ChromeDriver version correspondent to the Chrome version you are using. 
+For more information visit the official website: https://chromedriver.chromium.org/downloads
 
-## INPUTS ✨
+## Inputs ✨
 
 | Input name | meaning |
 | --- | --- |
 | Username | Your Facebook email |
 | Password | Your Facebook password |
-| Key | keyword URL |
 | number_posts_max | How many posts do you want to scrape  |
 | number_comments_max | How many comments do you want to scrape |
-
+| chrome_driver_path | chrome driver location on your local machine | 
 <p align="center">
 <img src=".github/posts_urls demo.gif">
 </p>
