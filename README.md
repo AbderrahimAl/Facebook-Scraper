@@ -10,7 +10,7 @@
 
 This tool allows you to scrape Facebook Posts based on search queries. You can use the end results for NLP tasks.
 
-### Prerequisites 🚀
+## Prerequisites 🚀
 
 You will need python 3+.
 
