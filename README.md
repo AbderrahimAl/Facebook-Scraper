@@ -21,8 +21,6 @@ git clone https://github.com/AbderrahimAl/Facebook-Scraper.git
 cd Facebook-Scraper
 pip install -r requirements.txt
 ```
-To execute `Selenium` script, you will need to install ChromeDriver version correspondent to the Chrome version you are using. 
-For more information visit the official website: https://chromedriver.chromium.org/downloads
 
 ## Inputs ✨
 
