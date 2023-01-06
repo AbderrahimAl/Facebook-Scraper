@@ -1,20 +1,24 @@
-from  selenium import webdriver
+from selenium import webdriver
 from bs4 import BeautifulSoup
 import time
 import re
 import json
 import pandas as pd
-from config import username, password, chrome_driver_path, number_posts_max, number_comments_max, output_file_name
+import chromedriver_autoinstaller
+from config import username, password, number_posts_max, number_comments_max, output_file_name
+chromedriver_autoinstaller.install()
+
 
 class Post_Scraper:
     """
     Post_Scraper class allows to scrape Facebook Posts based on search queries.
     """
     LOGIN_URL = "https://www.facebook.com"
+    MBASIC_URL = "https://mbasic.facebook.com"
     REACTIONS_NAMES = ['Like', 'Angry', 'Love', 'Haha', 'Sad','Care', 'Wow']
 
-    def __init__(self, driver_path, posts_url) -> None:
-        self.driver = webdriver.Chrome(driver_path)
+    def __init__(self, posts_url) -> None:
+        self.driver = webdriver.Chrome()
         self.posts_url = posts_url.replace("www", "mbasic")
 
 
@@ -66,7 +70,7 @@ class Post_Scraper:
         Return:
             A list of urls after applying the cleaning formula.
         """
-        clean_posts_urls_list = ["https://mbasic.facebook.com" + url.replace("https://m.facebook.com", '') for url in posts_urls_list]
+        clean_posts_urls_list = [self.MBASIC_URL + url.replace("https://m.facebook.com", '').replace(self.MBASIC_URL, '') for url in posts_urls_list]
         return clean_posts_urls_list
 
     def get_more_posts(self, soup):
@@ -106,7 +110,7 @@ class Post_Scraper:
                     full_story_tag = post.find('a',href=re.compile("/story.php"))
                 post_date_abbr = post.find("abbr")
                 if full_story_tag:
-                    full_story_href = full_story_tag["href"].replace("https://m.facebook.com", '').replace("https://mbasic.facebook.com", '')
+                    full_story_href = full_story_tag["href"].replace("https://m.facebook.com", '').replace(self.MBASIC_URL, '')
                     posts_urls_list.append(full_story_href)
                     if post_date_abbr:
                         post_date = post_date_abbr.get_text()
@@ -304,7 +308,7 @@ class Post_Scraper:
             
             more_comments = self.more_comments(soup)
             if more_comments is not None:
-                more_comments_url = 'https://mbasic.facebook.com' + more_comments
+                more_comments_url = self.MBASIC_URL + more_comments.replace(self.MBASIC_URL, '') 
                 self.driver.get(more_comments_url)
                 page_content = self.driver.page_source
                 soup = BeautifulSoup(page_content, 'html.parser')
@@ -319,7 +323,7 @@ class Post_Scraper:
 if __name__ == "__main__":
 
     posts_url = input(str("Enter Posts Url: "))
-    scraper = Post_Scraper(chrome_driver_path, posts_url)
+    scraper = Post_Scraper(posts_url)
     scraper.login(username, password) 
     soup = scraper.get_content()
     posts_urls_list, post_date_list, likes_list = scraper.get_posts_info(soup)
@@ -330,6 +334,7 @@ if __name__ == "__main__":
         number_posts_max = len(posts_urls_list)
 
     for i in range(number_posts_max):
+ 
         post_url = posts_urls_list[i]
         post_soup = scraper.get_content(post_url)
         time.sleep(3)
@@ -337,11 +342,14 @@ if __name__ == "__main__":
         profile_names_list.append(profile_name)
         profile_urls_list.append(profile_url)
         descriptions_list.append(scraper.get_post_description(post_soup))
-        who_commented, comments = scraper.get_post_comments(post_soup, comments_max=number_comments_max)
+        comments, who_commented = scraper.get_post_comments(post_soup, comments_max=number_comments_max)
         who_commented_list.append(who_commented)
         comments_list.append(comments)
         print("----------------------------------")
         print(f"post {i+1} successfully scraped")
+
+
+    print(len(profile_names_list), len(descriptions_list), len(profile_urls_list), len(comments_list), len(who_commented_list))
     data = {"profile_name":profile_names_list[:number_posts_max], "post_description":descriptions_list[:number_posts_max],
             "profile_url":profile_urls_list[:number_posts_max], "comments":comments_list[:number_posts_max],
             "who_commented":who_commented_list[:number_posts_max]}
