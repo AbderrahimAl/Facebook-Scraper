@@ -32,7 +32,7 @@ For more information visit the official website: https://chromedriver.chromium.o
 | Password | Your Facebook password |
 | number_posts_max | How many posts do you want to scrape  |
 | number_comments_max | How many comments do you want to scrape |
-| chrome_driver_path | chrome driver location on your local machine | 
+
 <p align="center">
 <img src=".github/posts_urls demo.gif">
 </p>

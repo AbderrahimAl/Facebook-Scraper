@@ -4,3 +4,4 @@ time
 re
 json
 pandas
+chromedriver-autoinstaller
