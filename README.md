@@ -39,6 +39,10 @@ pip install -r requirements.txt
 ## Disclaimer 🚧
 This educational tool probably violates Facebook terms of service. Use at your own risk.
 
+We are not responsible for any situations including:
+ * The potential for your Facebook account to undergo Checkpoint as a result of repeated or rapid actions.
+ * Problems about your privacy while using IP hiding techniques or any malicious scripts.
+
 ## Show Your Support ☕️
 That's all, thank you for your attention, please [![Star on GitHub][github-star-badge]][github-star] the repo to show your support.
 
